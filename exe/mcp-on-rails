@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "mcp/on/rails"
+require "optparse"
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: mcp-on-rails [options]"
+
+  opts.on("-n", "--name NAME", "Project name (defaults to current directory name)") do |name|
+    options[:project_name] = name
+  end
+
+  opts.on("-p", "--path PATH", "Project path (defaults to current directory)") do |path|
+    options[:project_path] = path
+  end
+
+  opts.on("-h", "--help", "Prints this help") do
+    puts opts
+    exit
+  end
+
+  opts.on("-v", "--version", "Show version") do
+    puts Mcp::On::Rails::VERSION
+    exit
+  end
+end.parse!
+
+puts "🚀 Setting up MCP on Rails..."
+puts ""
+
+Mcp::On::Rails.setup(
+  project_name: options[:project_name],
+  project_path: options[:project_path] || "."
+)

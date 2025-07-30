@@ -1,0 +1,96 @@
+# MCP on Rails Configuration
+# This file configures Model Context Protocol settings for Rails development
+# Compatible with various MCP clients including Claude, GitHub Copilot, and VS Code extensions
+
+project:
+  name: "<%= project_name %>"
+  type: "rails"
+  description: "Rails application with MCP-optimized AI assistance"
+
+# MCP Server Configuration
+mcp:
+  servers:
+    rails:
+      type: stdio
+      command: rails-mcp-server
+      args: []
+      env:
+        RAILS_ENV: development
+
+# Context Areas for AI Assistance
+contexts:
+  architect:
+    description: "Rails architect coordinating full-stack development"
+    directory: "."
+    focus: "overall architecture, coordination, best practices"
+    prompts:
+      - ".mcp-on-rails/prompts/architect.md"
+
+  models:
+    description: "ActiveRecord models, migrations, and database optimization"
+    directory: "./app/models"
+    focus: "data modeling, associations, validations, queries"
+    prompts:
+      - ".mcp-on-rails/prompts/models.md"
+
+  controllers:
+    description: "Rails controllers, routing, and request handling"
+    directory: "./app/controllers"
+    focus: "HTTP handling, routing, authentication, API design"
+    prompts:
+      - ".mcp-on-rails/prompts/controllers.md"
+
+  views:
+    description: "Rails views, layouts, partials, and frontend"
+    directory: "./app/views"
+    focus: "templating, UI components, responsive design"
+    related_contexts: ["stimulus"]
+    prompts:
+      - ".mcp-on-rails/prompts/views.md"
+
+  stimulus:
+    description: "Stimulus.js controllers and frontend interactivity"
+    directory: "./app/javascript"
+    focus: "JavaScript behavior, Turbo integration, DOM manipulation"
+    prompts:
+      - ".mcp-on-rails/prompts/stimulus.md"
+
+  jobs:
+    description: "Background jobs, ActiveJob, and async processing"
+    directory: "./app/jobs"
+    focus: "background processing, queues, scheduled tasks"
+    prompts:
+      - ".mcp-on-rails/prompts/jobs.md"
+
+  tests:
+    description: "Testing strategy, factories, and test coverage"
+    directory: "./test"
+    focus: "unit tests, integration tests, test-driven development"
+    prompts:
+      - ".mcp-on-rails/prompts/tests.md"
+
+  devops:
+    description: "Deployment, Docker, CI/CD, and production configuration"
+    directory: "./config"
+    focus: "deployment, infrastructure, environment configuration"
+    prompts:
+      - ".mcp-on-rails/prompts/devops.md"
+
+# Tool Configuration
+tools:
+  allowed:
+    - file_operations  # read, write, edit files
+    - terminal         # run commands
+    - search          # grep, find, search codebase
+    - analysis        # code analysis, linting
+    - testing         # run tests, generate test data
+
+# AI Assistant Guidelines
+guidelines:
+  - "Follow Rails conventions and best practices"
+  - "Use semantic file organization"
+  - "Prioritize readability and maintainability"
+  - "Consider performance implications"
+  - "Ensure proper error handling"
+  - "Write comprehensive tests"
+  - "Document complex logic"
