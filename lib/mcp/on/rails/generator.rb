@@ -21,9 +21,11 @@ module Mcp
           copy_prompts
           generate_config_file
           copy_context_file
+          create_copilot_instructions
           create_executable
           puts "✅ MCP on Rails setup completed for '#{project_name}'"
           puts "📁 Files created in: #{File.join(project_path, ".mcp-on-rails")}"
+          puts "📋 GitHub Copilot instructions: #{File.join(project_path, ".github/copilot-instructions.md")}"
           puts "🚀 Run: ./bin/mcp-setup to configure your project"
         end
 
@@ -53,6 +55,15 @@ module Mcp
         def copy_context_file
           source_file = File.join(templates_path, "context.md")
           target_file = File.join(project_path, ".mcp-on-rails", "context.md")
+          FileUtils.cp(source_file, target_file)
+        end
+
+        def create_copilot_instructions
+          github_dir = File.join(project_path, ".github")
+          FileUtils.mkdir_p(github_dir)
+
+          source_file = File.join(templates_path, "copilot-instructions.md")
+          target_file = File.join(github_dir, "copilot-instructions.md")
           FileUtils.cp(source_file, target_file)
         end
 
