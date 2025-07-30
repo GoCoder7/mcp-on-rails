@@ -2,6 +2,8 @@
 
 MCP on Rails provides pre-configured Model Context Protocol (MCP) settings, specialized prompts, and templates for Rails development with AI assistants like Claude, GitHub Copilot, and other MCP-compatible tools.
 
+> 🙏 **Acknowledgments**: This project is inspired by and adapted from [claude-on-rails](https://github.com/obie/claude-on-rails) by Obie Fernandez. The original prompts and swarm configuration have been restructured for broader MCP compatibility.
+
 ## Features
 
 - 🧠 **Specialized AI Prompts** - Context-aware prompts for different Rails components (models, controllers, views, etc.)
