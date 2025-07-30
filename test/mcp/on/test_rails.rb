@@ -7,7 +7,11 @@ class Mcp::On::TestRails < Minitest::Test
     refute_nil ::Mcp::On::Rails::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
+  def test_setup_method_exists
+    assert_respond_to ::Mcp::On::Rails, :setup
+  end
+
+  def test_generator_class_exists
+    assert defined?(::Mcp::On::Rails::Generator)
   end
 end
