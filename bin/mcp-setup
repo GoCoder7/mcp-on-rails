@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+puts "🔧 Setting up MCP on Rails for TestProject4"
+puts "📋 Configuration files are ready in .mcp-on-rails/"
+puts ""
+puts "Next steps:"
+puts "1. Configure your MCP client to use .mcp-on-rails/mcp-config.yml"
+puts "2. Use the prompts in .mcp-on-rails/prompts/ for context-aware AI assistance"
+puts "3. Customize the configuration as needed for your project"
