@@ -22,7 +22,3 @@
 
 ### Credits
 - Inspired by and adapted from [claude-on-rails](https://github.com/obie/claude-on-rails) by Obie Fernandez
-
-## [0.1.0] - 2025-07-30
-
-- Initial release
