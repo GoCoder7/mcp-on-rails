@@ -9,7 +9,9 @@ Gem::Specification.new do |spec|
   spec.email = ["gocoder7@gmail.com"]
 
   spec.summary = "MCP (Model Context Protocol) configuration and prompts for Rails projects"
-  spec.description = "A gem that provides pre-configured MCP settings, specialized prompts, and templates for Rails development with AI assistants like Claude, GitHub Copilot, and other MCP-compatible tools."
+  spec.description = "A gem that provides pre-configured MCP settings, specialized prompts, and templates " \
+                     "for Rails development with AI assistants like Claude, GitHub Copilot, and other " \
+                     "MCP-compatible tools."
   spec.homepage = "https://github.com/GoCoder7/mcp-on-rails"
   spec.required_ruby_version = ">= 3.1.0"
 

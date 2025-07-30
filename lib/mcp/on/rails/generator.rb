@@ -6,6 +6,8 @@ require "fileutils"
 module Mcp
   module On
     module Rails
+      # Generator class for creating MCP configuration files and directories
+      # Handles project setup with templates and customization
       class Generator
         attr_reader :project_name, :project_path
 
@@ -21,7 +23,7 @@ module Mcp
           copy_context_file
           create_executable
           puts "✅ MCP on Rails setup completed for '#{project_name}'"
-          puts "📁 Files created in: #{File.join(project_path, '.mcp-on-rails')}"
+          puts "📁 Files created in: #{File.join(project_path, ".mcp-on-rails")}"
           puts "🚀 Run: ./bin/mcp-setup to configure your project"
         end
 
@@ -41,10 +43,10 @@ module Mcp
         def generate_config_file
           template_file = File.join(templates_path, "mcp-config.yml.erb")
           target_file = File.join(project_path, ".mcp-on-rails", "mcp-config.yml")
-          
+
           template = ERB.new(File.read(template_file))
           content = template.result(binding)
-          
+
           File.write(target_file, content)
         end
 
@@ -57,11 +59,18 @@ module Mcp
         def create_executable
           bin_dir = File.join(project_path, "bin")
           FileUtils.mkdir_p(bin_dir)
-          
-          executable_content = <<~SCRIPT
+
+          executable_content = build_executable_content
+          executable_path = File.join(bin_dir, "mcp-setup")
+          File.write(executable_path, executable_content)
+          FileUtils.chmod(0o755, executable_path)
+        end
+
+        def build_executable_content
+          <<~SCRIPT
             #!/usr/bin/env ruby
             # frozen_string_literal: true
-            
+
             puts "🔧 Setting up MCP on Rails for #{project_name}"
             puts "📋 Configuration files are ready in .mcp-on-rails/"
             puts ""
@@ -70,10 +79,6 @@ module Mcp
             puts "2. Use the prompts in .mcp-on-rails/prompts/ for context-aware AI assistance"
             puts "3. Customize the configuration as needed for your project"
           SCRIPT
-          
-          executable_path = File.join(bin_dir, "mcp-setup")
-          File.write(executable_path, executable_content)
-          FileUtils.chmod(0o755, executable_path)
         end
 
         def templates_path

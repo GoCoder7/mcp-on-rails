@@ -5,6 +5,8 @@ require_relative "rails/generator"
 
 module Mcp
   module On
+    # Main module for MCP on Rails gem
+    # Provides setup functionality for Rails projects with MCP configuration
     module Rails
       class Error < StandardError; end
 

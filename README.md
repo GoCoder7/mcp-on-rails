@@ -80,20 +80,35 @@ your-rails-project/
     └── mcp-setup          # Project setup script
 ```
 
-## MCP Client Configuration
+## Using with AI Assistants
 
-### VS Code with GitHub Copilot
+### GitHub Copilot (VS Code)
 
-1. Install the MCP extension for VS Code
-2. Configure your workspace settings:
+GitHub Copilot doesn't directly read MCP configuration files, but you can leverage the specialized prompts by:
 
-```json
-{
-  "mcp.configPath": ".mcp-on-rails/mcp-config.yml"
-}
-```
+1. **Reference prompts in your requests**:
+   ```
+   "Please check .mcp-on-rails/prompts/models.md for Rails model best practices and help me with this ActiveRecord model"
+   ```
 
-### Claude Desktop
+2. **Use context-aware requests**:
+   ```
+   "Looking at .mcp-on-rails/prompts/controllers.md, help me implement this API endpoint"
+   ```
+
+3. **Add to VS Code workspace settings** (optional):
+   ```json
+   {
+     "files.associations": {
+       ".mcp-on-rails/**/*.md": "markdown"
+     },
+     "explorer.fileNesting.patterns": {
+       ".mcp-on-rails": "mcp-config.yml,context.md"
+     }
+   }
+   ```
+
+### Claude Desktop (Native MCP Support)
 
 Add to your Claude Desktop configuration:
 
@@ -110,9 +125,13 @@ Add to your Claude Desktop configuration:
 }
 ```
 
-### Other MCP Clients
+### Other AI Assistants
 
-The generated `mcp-config.yml` is compatible with most MCP clients. Refer to your client's documentation for specific configuration steps.
+For any AI assistant, you can reference the specialized prompts manually:
+- **Models**: "Use .mcp-on-rails/prompts/models.md as context"
+- **Controllers**: "Reference .mcp-on-rails/prompts/controllers.md"
+- **Views**: "Check .mcp-on-rails/prompts/views.md for guidance"
+- **Tests**: "Follow .mcp-on-rails/prompts/tests.md best practices"
 
 ## Context Areas
 
