@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+## [0.3.2] - 2025-08-02
+
+### Changed
+- Minor version update for gem distribution
+
 ## [0.1.0] - 2025-07-30
 
 ### Added
