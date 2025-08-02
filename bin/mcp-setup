@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-puts "🔧 Setting up MCP on Rails for TestProject4"
+puts "🔧 Setting up MCP on Rails for TestProjectV3"
 puts "📋 Configuration files are ready in .mcp-on-rails/"
 puts ""
 puts "Next steps:"
