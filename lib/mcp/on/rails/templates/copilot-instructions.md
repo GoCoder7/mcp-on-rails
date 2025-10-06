@@ -29,7 +29,7 @@ This Rails project uses **MCP on Rails** configuration located in `.mcp-on-rails
 
    - **`requirement.md`** - Detailed requirements and acceptance criteria
    - **`design.md`** - Technical design, architecture decisions, and implementation approach
-     - **MANDATORY**: Must query `rails-mcp-server` for latest Rails documentation(and `context7` for relevant context) before writing
+     - **MANDATORY**: Must query `context7` for latest Rails documentation before writing
      - **MANDATORY**: Include version-specific Rails patterns and best practices
      - **MANDATORY**: Reference current Rails guides for security, performance, and conventions
    - **`tasks.md`** - Step-by-step task breakdown with progress tracking
@@ -42,7 +42,7 @@ This Rails project uses **MCP on Rails** configuration located in `.mcp-on-rails
 
 ### 🔍 **Rails Documentation Integration**
 
-**Always leverage `rails-mcp-server` for up-to-date Rails guidance**:
+**Always leverage `context7` for up-to-date Rails guidance**:
 
 1. **During design.md Creation** (MANDATORY):
 
@@ -281,7 +281,7 @@ Always follow:
 When asked to help with Rails development:
 
 1. **📋 CREATE SPECS FIRST** (MANDATORY): Always start with `.mcp-on-rails/specs/[feature-name]/` directory creation
-2. **🔍 Query Rails MCP**: Use `rails-mcp-server` to get latest Rails documentation and best practices
+2. **🔍 Query Rails MCP**: Use `context7` to get latest Rails documentation and best practices
 3. **🎯 Identify the area** of work (models, controllers, views, etc.)
 4. **📚 Reference the appropriate prompt**: "Let me check .mcp-on-rails/prompts/[area].md for best practices"
 5. **🔧 Apply specialist knowledge** for that area with current Rails version considerations
@@ -289,11 +289,28 @@ When asked to help with Rails development:
 7. **🧪 Ensure comprehensive testing** and documentation
 8. **📝 Update progress**: Mark completed tasks in `tasks.md` throughout development
 
+### Rails Command Execution Guidelines
+
+**⚠️ IMPORTANT: Use Rails Runner Instead of Rails Console**
+
+- **NEVER use `rails console`** - it's interactive and will cause infinite waiting
+- **ALWAYS use `rails runner`** for executing Rails code in terminal
+- **Example**: Instead of opening console and typing code, use:
+  ```bash
+  rails runner "User.create(name: 'John', email: 'john@example.com')"
+  rails runner "MyModel.find(1).update(status: 'active')"
+  rails runner "puts Rails.env"
+  ```
+- **For complex operations**: Create a temporary script file and run it:
+  ```bash
+  rails runner script/temporary_operation.rb
+  ```
+
 ### Mandatory Pre-Development Checklist:
 
 - [ ] Created `.mcp-on-rails/specs/[feature-name]/` directory
 - [ ] Written comprehensive `requirement.md`
-- [ ] **MANDATORY**: Queried `rails-mcp-server` for latest Rails documentation and patterns
+- [ ] **MANDATORY**: Queried `context7` for latest Rails documentation and patterns
 - [ ] **MANDATORY**: Incorporated current Rails version best practices into `design.md`
 - [ ] Designed technical approach in `design.md` with up-to-date Rails guidance
 - [ ] Planned step-by-step tasks in `tasks.md`
